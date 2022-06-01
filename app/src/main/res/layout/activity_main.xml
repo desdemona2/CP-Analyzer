@@ -25,7 +25,7 @@
             android:text="@string/default_time"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="42sp"
+            android:textSize="38sp"
             android:fontFamily="@font/inter_bold"
             />
 
@@ -56,7 +56,7 @@
             android:text="@string/default_up_start"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="42sp"
+            android:textSize="52sp"
             android:fontFamily="@font/inter_bold"
             />
 
