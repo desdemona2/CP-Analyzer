@@ -6,8 +6,11 @@
         <entry key="app/src/main/res/drawable/chrono_bg.xml" value="0.1685" />
         <entry key="app/src/main/res/drawable/history.xml" value="0.1685" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_practise_mode.xml" value="0.2821718683197948" />
+        <entry key="app/src/main/res/layout/add_values.xml" value="0.2821718683197948" />
         <entry key="app/src/main/res/layout/chrono_bg.xml" value="0.2902949978623343" />
         <entry key="app/src/main/res/layout/items.xml" value="0.2902949978623343" />
+        <entry key="app/src/main/res/layout/select_frag.xml" value="0.2902949978623343" />
       </map>
     </option>
   </component>

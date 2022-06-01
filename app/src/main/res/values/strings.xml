@@ -11,4 +11,10 @@
     <string name="pause">Pause</string>
     <string name="default_up_start">00:00:00</string>
     <string name="resume">resume</string>
+    <string name="time_minutes">Enter Total time in minutes</string>
+    <string name="total_question">Enter Total number of questions</string>
+    <string name="submit">Submit</string>
+    <string name="welcome">Welcome</string>
+    <string name="default_values">default values</string>
+    <string name="invalid_values">Invalid values Entered, Using default Values</string>
 </resources>

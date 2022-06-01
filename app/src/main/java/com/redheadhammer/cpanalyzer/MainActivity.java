@@ -1,57 +1,74 @@
 package com.redheadhammer.cpanalyzer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean timerRunning = false;
-    private CustomTimer customTimer;
-    private CustomUpTimer customUpTimer;
-    private Button toggle;
+    private int totalTime;
+    private int questions;
+    ImageView cancel;
+    TextInputEditText time, question_size;
+    Button defaultValues, submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        TextView totalTime = findViewById(R.id.total_time);
-        TextView questionTime = findViewById(R.id.question_time);
-        toggle = findViewById(R.id.button);
+        setContentView(R.layout.add_values);
 
-        customTimer = new CustomTimer(totalTime);
-        customUpTimer = new CustomUpTimer(questionTime);
+        /* attach views with its ui-elements */
+        cancel = findViewById(R.id.cancel);
+        time = findViewById(R.id.time_input);
+        question_size = findViewById(R.id.total_questions);
 
-        toggle.setOnClickListener(this::onClick);
-        toggle.setOnLongClickListener(this::onLongClick);
+        defaultValues = findViewById(R.id.default_values);
+        submit = findViewById(R.id.submit);
+
+        submit.setOnClickListener(this::onSubmit);
+        cancel.setOnClickListener(this::cancel);
+        defaultValues.setOnClickListener(this::cancel);
     }
 
-    public void onClick(View view) {
-        if (timerRunning) {
-            customTimer.stopTimer();
-            customUpTimer.stopTimer();
-
-            timerRunning = false;
-            toggle.setText(R.string.resume);
-        } else {
-            customTimer.startTimer();
-            customUpTimer.startTimer();
-
-            timerRunning = true;
-            toggle.setText(R.string.pause);
+    public void onSubmit(View view) {
+        try {
+            totalTime = Integer.parseInt(String.valueOf(time.getText()))*60000;
+            questions = Integer.parseInt(String.valueOf(question_size.getText()));
+        } catch (NumberFormatException e) {
+            totalTime = 10_800_000;
+            questions  = 7;
+            Toast.makeText(this, R.string.invalid_values,
+                    Toast.LENGTH_LONG).show();
         }
+        startActivity();
+    }
+    private void startActivity(){
+        Intent intent = new Intent(this,
+                CompetitiveMode.class);
+        intent.putExtra("totalTime", totalTime);
+        intent.putExtra("questions", (Integer)questions);
+        this.startActivity(intent);
     }
 
-    public boolean onLongClick(View view) {
-        timerRunning = false;
-        customTimer.resetTimer();
-        customUpTimer.resetTimer();
-
-        toggle.setText(R.string.start);
-        return true;
+    public void cancel(View view){
+        totalTime = 10_800_000;
+        questions  = 7;
+        startActivity();
     }
 }

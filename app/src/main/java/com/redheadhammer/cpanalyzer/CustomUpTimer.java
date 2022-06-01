@@ -37,9 +37,10 @@ public class CustomUpTimer {
         countUpTimer.cancel();
         upTime = DEFAULT;
         updateTimer();
+        upTime -= 1000;
     }
 
-    public void updateTimer(){
+    public String updateTimer(){
         int value = (int)DEFAULT - (int)upTime;
 
         StringBuilder timeFormat = new StringBuilder();
@@ -66,5 +67,6 @@ public class CustomUpTimer {
         }
 
         questionTimer.setText(timeFormat.toString());
+        return timeFormat.toString();
     }
 }
