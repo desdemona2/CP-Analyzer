@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CP Analyzer</string>
+    <string name="contest_mode">Contest Mode</string>
+    <string name="single_problem">Practise</string>
+    <string name="history">history</string>
+    <string name="default_time">03:00:00</string>
+    <string name="default_start">00:00:00</string>
+    <string name="reset_timer">Timer Reset Successfully</string>
+    <string name="timer_finished">Timer Finished</string>
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="default_up_start">00:00:00</string>
+    <string name="resume">resume</string>
+</resources>

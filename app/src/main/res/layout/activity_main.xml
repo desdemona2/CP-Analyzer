@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--  Total time for Competition  -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/total_time_wrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="#00239a"
+        android:layout_height="100dp"
+        app:cardCornerRadius="35dp">
+
+        <TextView
+            android:id="@+id/total_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/default_time"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="42sp"
+            android:fontFamily="@font/inter_bold"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <!--  Chronometer for each question  -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/question_time_wrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_time_wrapper"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardPreventCornerOverlap="false"
+        android:layout_height="100dp">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:src="@drawable/background_chronometer"
+            />
+        <TextView
+            android:id="@+id/question_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/default_up_start"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="42sp"
+            android:fontFamily="@font/inter_bold"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <!--  Recycler View for Competition Stats  -->
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question_time_wrapper"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/items"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:text="@string/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        android:layout_marginBottom="30dp"
+        style="@style/Widget.Material3.Button.TextButton"
+        app:layout_constraintHorizontal_bias="0.94"
+        android:textSize="26sp"
+        />
+
+    <!--  Bottom Bar Below  -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_bar"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="20dp"
+        android:layout_height="50dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="68dp"
+                android:contentDescription="@string/contest_mode"
+                android:src="@drawable/ic_university"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toStartOf="@+id/single"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/single"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="69dp"
+                android:contentDescription="@string/single_problem"
+                android:src="@drawable/ic_practise"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toStartOf="@+id/history"
+                app:layout_constraintStart_toEndOf="@+id/home"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/history"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/history"
+                android:src="@drawable/ic_history"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/single"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
