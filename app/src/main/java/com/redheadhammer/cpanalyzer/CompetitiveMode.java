@@ -1,6 +1,5 @@
 package com.redheadhammer.cpanalyzer;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,8 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -52,6 +49,9 @@ public class CompetitiveMode extends AppCompatActivity {
         /* setting recyclerView and its elements */
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        /* adding bottom bar functions */
+        @SuppressWarnings("unused") BottomBar bottomBar = new BottomBar(CompetitiveMode.this);
 
         questionStatus = new String[size];
         Arrays.fill(questionStatus, "Pending");

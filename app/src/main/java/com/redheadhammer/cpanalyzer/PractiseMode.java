@@ -13,7 +13,6 @@ public class PractiseMode extends AppCompatActivity {
 
     private Chronometer chronometer;
     private RecyclerView recyclerView;
-    Chronometer chrono;
     private boolean isRunning = false;
     private Button button;
     private long offset = 0;
@@ -27,18 +26,33 @@ public class PractiseMode extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
         button = findViewById(R.id.toggle);
 
+        /* adding bottom bar functions */
+        BottomBar bottomBar = new BottomBar(PractiseMode.this);
+
         button.setOnClickListener(this::startChron);
+        button.setOnLongClickListener(this::onLongClick);
     }
     public void startChron(View view) {
         if (isRunning){
-            offset = SystemClock.elapsedRealtime();
+            offset = SystemClock.elapsedRealtime() - chronometer.getBase();
             chronometer.stop();
             isRunning = false;
+            button.setText(R.string.resume);
         }
         else {
             chronometer.setBase(SystemClock.elapsedRealtime()-offset);
             chronometer.start();
             isRunning = true;
+            button.setText(R.string.pause);
         }
+    }
+
+    public boolean onLongClick(View view) {
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        button.setText(R.string.start);
+        offset = 0;
+        chronometer.stop();
+        isRunning = false;
+        return true;
     }
 }

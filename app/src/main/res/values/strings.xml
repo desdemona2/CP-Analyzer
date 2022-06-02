@@ -17,4 +17,5 @@
     <string name="welcome">Welcome</string>
     <string name="default_values">default values</string>
     <string name="invalid_values">Invalid values Entered, Using default Values</string>
+    <string name="useless">No need</string>
 </resources>
