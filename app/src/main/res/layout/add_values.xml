@@ -71,7 +71,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/time_input"
-                                android:inputType="text"
+                                android:inputType="numberDecimal"
                                 android:layout_width="match_parent"
                                 android:fontFamily="@font/inter_medium"
                                 android:layout_height="wrap_content" />
@@ -92,7 +92,7 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/total_questions"
-                                android:inputType="text"
+                                android:inputType="numberDecimal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
 

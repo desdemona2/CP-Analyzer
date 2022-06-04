@@ -12,7 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 public class CompetitiveMode extends AppCompatActivity {
@@ -21,9 +25,12 @@ public class CompetitiveMode extends AppCompatActivity {
     private CustomTimer customTimer;
     private CustomUpTimer customUpTimer;
     private Button toggle;
-    private int question = 0;
+    protected static int question = 0;
     private RecyclerAdapter recyclerAdapter;
     private String[] questionStatus;
+    private ArrayList<String[]> info;
+    private final String[] data = new String[2];
+    private final int MAX_SIZE = 15;
     private int size;
     private int time;
 
@@ -46,6 +53,7 @@ public class CompetitiveMode extends AppCompatActivity {
         TextView questionTime = findViewById(R.id.question_time);
         toggle = findViewById(R.id.button);
 
+        info = FileHelper.readData(CompetitiveMode.this);
         /* setting recyclerView and its elements */
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -60,8 +68,9 @@ public class CompetitiveMode extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapter);
 
         /* setting up both timers */
-        customTimer = new CustomTimer(totalTime, (long)time);
         customUpTimer = new CustomUpTimer(questionTime);
+        customTimer = new CustomTimer(totalTime, time, info, customUpTimer,size, MAX_SIZE, toggle);
+
         /* set total-time so that it doesn't show default value */
         customTimer.updateTimer();
 
@@ -72,8 +81,8 @@ public class CompetitiveMode extends AppCompatActivity {
 
     public void onSolved(View view) {
         if (question < size && timerRunning) {
-            String time = customUpTimer.updateTimer();
-            questionStatus[question] = time;
+            String singleTime = customUpTimer.updateTimer();
+            questionStatus[question] = singleTime;
             customUpTimer.resetTimer();
             customUpTimer.startTimer();
             recyclerAdapter.notifyItemChanged(question++);
@@ -82,6 +91,17 @@ public class CompetitiveMode extends AppCompatActivity {
                 questionStatus[question] = "Solving";
                 recyclerAdapter.notifyItemChanged(question);
             } else {
+                /* data[0] = LocalDate.now().toString(); */
+                data[0] = new SimpleDateFormat("MM/dd HH:mm",
+                        Locale.US).format(Calendar.getInstance().getTime());
+
+                data[1] = question + "/" + size + " Solved " + customTimer.timeFormat(time);;
+                if (info.size() > MAX_SIZE) {
+                    info.remove(0);
+                }
+                info.add(data);
+
+                FileHelper.writeData( info,CompetitiveMode.this);
                 customTimer.stopTimer();
                 customUpTimer.stopTimer();
                 timerRunning = false;

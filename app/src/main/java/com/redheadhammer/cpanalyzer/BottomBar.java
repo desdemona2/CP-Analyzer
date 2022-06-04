@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class BottomBar {
     private final Context context;
@@ -49,6 +48,8 @@ public class BottomBar {
     }
 
     public void onClickHistory(View view) {
-        Toast.makeText(context, "History click", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(context, History.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        this.context.startActivity(intent);
     }
 }
