@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".History">
+
+
+
+    <TextView
+        android:id="@+id/useless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/useless2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/date_time"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="22sp"
+        android:layout_marginStart="20dp"
+        />
+
+    <TextView
+        android:id="@+id/useless2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/useless"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/performance"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="22sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_recycler"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/useless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        android:layout_marginBottom="20dp"
+        tools:listitem="@layout/items"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        />
+
+    <ImageView
+        android:id="@+id/github"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/useless"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="15dp"
+        android:tag="@string/github"
+        android:src="@drawable/ic_github"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!--  Bottom Bar Below  -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_bar"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="20dp"
+        android:layout_height="50dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="68dp"
+                android:contentDescription="@string/contest_mode"
+                android:src="@drawable/ic_university"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toStartOf="@+id/single"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/single"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="69dp"
+                android:contentDescription="@string/single_problem"
+                android:src="@drawable/ic_practise"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toStartOf="@+id/history"
+                app:layout_constraintStart_toEndOf="@+id/home"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/history"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/history"
+                android:src="@drawable/ic_history"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/single"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

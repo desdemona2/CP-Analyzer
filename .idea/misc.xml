@@ -5,7 +5,11 @@
       <map>
         <entry key="app/src/main/res/drawable/chrono_bg.xml" value="0.1685" />
         <entry key="app/src/main/res/drawable/history.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/ic_cancel.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_github.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_github_background.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_github_foreground.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_history.xml" value="0.181" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_practise_mode.xml" value="0.2821718683197948" />
         <entry key="app/src/main/res/layout/add_values.xml" value="0.1" />
