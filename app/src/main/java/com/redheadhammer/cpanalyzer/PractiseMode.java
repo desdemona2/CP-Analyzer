@@ -53,9 +53,14 @@ public class PractiseMode extends AppCompatActivity {
     }
     public void onClickChron(View view){
         int total_states = 8;
-        if (state < total_states) {
+        if (state < total_states && isRunning) {
             time[state] = String.valueOf(SystemClock.elapsedRealtime() - chronometer.getBase());
             practiseAdapter.notifyItemChanged(state++);
+        }
+        if (state == total_states && isRunning) {
+            chronometer.stop();
+            isRunning = false;
+            button.setText(R.string.resume);
         }
     }
 
