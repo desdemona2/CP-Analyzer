@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 
+import java.util.Arrays;
+
+
 public class PractiseMode extends AppCompatActivity {
 
     private Chronometer chronometer;
@@ -20,6 +23,9 @@ public class PractiseMode extends AppCompatActivity {
     private boolean isRunning = false;
     private Button button;
     private long offset = 0;
+    private int state = 0;
+    private final String[] time = new String[8];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +41,9 @@ public class PractiseMode extends AppCompatActivity {
         // noinspection unused
         BottomBar bottomBar = new BottomBar(PractiseMode.this);
 
+        Arrays.fill(time, "N/A");
         /* creating practise adapter */
-        practiseAdapter = new PractiseAdapter(PractiseMode.this);
+        practiseAdapter = new PractiseAdapter(PractiseMode.this, time);
         recyclerView.setLayoutManager(new LinearLayoutManager(PractiseMode.this));
         recyclerView.setAdapter(practiseAdapter);
 
@@ -45,7 +52,11 @@ public class PractiseMode extends AppCompatActivity {
         container.setOnClickListener(this::onClickChron);
     }
     public void onClickChron(View view){
-
+        int total_states = 8;
+        if (state < total_states) {
+            time[state] = String.valueOf(SystemClock.elapsedRealtime() - chronometer.getBase());
+            practiseAdapter.notifyItemChanged(state++);
+        }
     }
 
     public void startChron(View view) {
@@ -68,6 +79,9 @@ public class PractiseMode extends AppCompatActivity {
         chronometer.setBase(SystemClock.elapsedRealtime());
         button.setText(R.string.start);
         offset = 0;
+        Arrays.fill(time, "N/A");
+        practiseAdapter.notifyItemRangeChanged(0, state);
+        state = 0;
         chronometer.stop();
         isRunning = false;
         return true;
