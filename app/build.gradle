@@ -7,10 +7,10 @@ android {
 
     defaultConfig {
         applicationId "com.redheadhammer.cpanalyzer"
-        minSdk 26
+        minSdk 24
         targetSdk 32
         versionCode 1
-        versionName "2.0"
+        versionName "2.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
